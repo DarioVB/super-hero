@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFrag">
+
+    <fragment
+        android:id="@+id/mainFrag"
+        android:name="com.coppel.superhero.ui.main.MainFragment"
+        android:label="main"
+        tools:layout="@layout/main_fragment">
+
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFrag"
+            app:enterAnim="@anim/anim_nav_enter_from_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFrag"
+        android:label="detail"
+        tools:layout="@layout/detail_fragment">
+
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/mainFrag"
+            app:enterAnim="@anim/anim_nav_exit_from_left" />
+    </fragment>
+</navigation>
