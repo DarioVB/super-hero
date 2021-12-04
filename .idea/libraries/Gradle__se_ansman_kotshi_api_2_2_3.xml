@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: se.ansman.kotshi:api:2.2.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/se.ansman.kotshi/api/2.2.3/7c4e675f70dc7fbdb824c728936f1adc034d7934/api-2.2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/se.ansman.kotshi/api/2.2.3/3b4037dc3942be8f9cdf1bf323485308b02a8da3/api-2.2.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/se.ansman.kotshi/api/2.2.3/c00e3366e21689affb75d6ed1ac7bb8ea01b53b4/api-2.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

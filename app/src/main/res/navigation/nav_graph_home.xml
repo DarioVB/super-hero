@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/homeFrag"
-        android:name="com.coppel.superhero.ui.main.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/home_fragment"/>
+        android:name="com.coppel.superhero.ui.main.home.HeroListFragment"
+        android:label="HeroListFragment"
+        tools:layout="@layout/hero_list_fragment"/>
 
     <fragment
         android:id="@+id/favsFrag"

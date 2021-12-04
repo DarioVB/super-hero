@@ -14,17 +14,22 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFrag"
-            app:enterAnim="@anim/anim_nav_enter_from_right" />
+            app:enterAnim="@anim/anim_slide_in_right" />
     </fragment>
 
     <fragment
         android:id="@+id/detailFrag"
         android:label="detail"
+        android:name="com.coppel.superhero.ui.main.detail.DetailFragment"
         tools:layout="@layout/detail_fragment">
+
+        <argument
+            android:name="hero"
+            app:argType="com.coppel.superhero.models.Hero"/>
 
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/mainFrag"
-            app:enterAnim="@anim/anim_nav_exit_from_left" />
+            app:enterAnim="@anim/anim_slide_out_right" />
     </fragment>
 </navigation>
