@@ -16,7 +16,8 @@
     <string name="menu_refresh">Refresh</string>
     <string name="title_favorites">Favorites</string>
     <string name="info_failed_to_add_to_favourite">Failed to Add to Favorites</string>
-    <string name="info_added_to_favourite"> Added to Favorites</string>
+    <string name="info_added_to_favorites"> Added to Favorites</string>
+    <string name="info_deleted_from_favorites"> Deleted from Favorites</string>
     <string name="label_place_of_birth">Place of Birth</string>
     <string name="label_first_appearance">First Appearance</string>
     <string name="waiting_to_search">Waiting to Search.....</string>

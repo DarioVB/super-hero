@@ -2,6 +2,7 @@ package com.coppel.superhero.ui.main.home
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -50,7 +51,7 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
         })
 
         binding.rvHeroList.adapter = adapter
-        binding.swipeRefreshHeroes.setOnRefreshListener {
+        binding.swipeList.setOnRefreshListener {
             refreshDataList()
         }
 
@@ -76,7 +77,8 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        return false
+        homeViewModel.fetchHeroesList(query)
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
@@ -84,7 +86,7 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when(item!!.itemId){
+        when(item!!.itemId) {
             R.id.action_settings -> {
                 return true
             }
@@ -97,18 +99,24 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
         homeViewModel.heroStatus.observe(viewLifecycleOwner, Observer { apiStatus ->
             when (apiStatus) {
                 ApiServiceStatus.DONE -> {
-                    binding.swipeRefreshHeroes.isRefreshing = false
+                    if (binding.swipeList.isRefreshing) {
+                        binding.swipeList.isRefreshing = false
+                    }
                 }
                 ApiServiceStatus.NO_INTERNET_CONNECTION -> {
                     binding.imgLoadingStatus.visibility = View.VISIBLE
                     binding.imgLoadingStatus.setImageResource(R.drawable.ic_signal_wifi_bad)
-                    binding.swipeRefreshHeroes.isRefreshing = false
+                    binding.swipeList.isRefreshing = false
                 }
                 ApiServiceStatus.LOADING -> {
-                    binding.swipeRefreshHeroes.isRefreshing = true
+                    if (!binding.swipeList.isRefreshing) {
+                        binding.swipeList.isRefreshing = true
+                    }
                 }
                 else -> {
-                    binding.swipeRefreshHeroes.isRefreshing = false
+                    if (binding.swipeList.isRefreshing) {
+                        binding.swipeList.isRefreshing = false
+                    }
                 }
             }
         })

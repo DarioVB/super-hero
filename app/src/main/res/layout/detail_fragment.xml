@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
+            app:title="@{viewModel.selectedHero.name}"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="top"
             app:expandedTitleTextAppearance="@android:color/transparent"
@@ -259,6 +260,7 @@
                                 android:text="@string/title_biography"
                                 android:gravity="center_vertical|end"
                                 android:textSize="18sp"
+                                android:textStyle="bold"
                                 android:textColor="@color/orangeDarker"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -486,6 +488,7 @@
                                 android:layout_marginTop="4dp"
                                 android:text="@string/tittle_connection"
                                 android:textSize="18sp"
+                                android:textStyle="bold"
                                 android:gravity="center_vertical|end"
                                 android:textColor="@color/orangeDarker"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -585,6 +588,7 @@
                                 android:layout_marginTop="4dp"
                                 android:text="@string/tittle_work"
                                 android:textSize="18sp"
+                                android:textStyle="bold"
                                 android:gravity="center_vertical|end"
                                 android:textColor="@color/orangeDarker"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -650,5 +654,18 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_add_favorite"
+            app:fabSize="normal"
+            app:tint="@color/white"
+            app:backgroundTint="@color/rose"
+            app:rippleColor="@color/rose"
+            android:layout_margin="16dp"
+            android:contentDescription="" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

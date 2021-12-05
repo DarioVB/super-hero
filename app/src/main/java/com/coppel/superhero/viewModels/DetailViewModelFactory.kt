@@ -9,7 +9,8 @@ import com.coppel.superhero.room.daos.FavoritesDao
 class DetailViewModelFactory (
 
     private val superHero: Hero,
-    private val application: Application
+    private val application: Application,
+    private val dbFavorites: FavoritesDao
 
 ) : ViewModelProvider.Factory {
 
@@ -18,7 +19,8 @@ class DetailViewModelFactory (
         if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
             return DetailViewModel(
                 superHero,
-                application
+                application,
+                dbFavorites
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

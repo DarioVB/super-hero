@@ -10,11 +10,23 @@
         android:id="@+id/homeFrag"
         android:name="com.coppel.superhero.ui.main.home.HeroListFragment"
         android:label="HeroListFragment"
-        tools:layout="@layout/hero_list_fragment"/>
+        tools:layout="@layout/hero_list_fragment">
+
+        <action
+            android:id="@+id/action_homeFragment_to_FavsFragment"
+            app:destination="@id/favsFrag"
+            app:enterAnim="@anim/anim_slide_in_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/favsFrag"
         android:name="com.coppel.superhero.ui.main.favorites.FavoritesFragment"
         android:label="FavoritesFragment"
-        tools:layout="@layout/favorites_fragment"/>
+        tools:layout="@layout/favorites_fragment">
+
+        <action
+            android:id="@+id/action_FavsFragment_to_homeFragment"
+            app:destination="@id/homeFrag"
+            app:enterAnim="@anim/anim_slide_out_right" />
+    </fragment>
 </navigation>

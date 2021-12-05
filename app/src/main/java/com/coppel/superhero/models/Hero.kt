@@ -9,36 +9,38 @@ import com.coppel.superhero.room.*
 import kotlinx.parcelize.Parcelize
 import se.ansman.kotshi.JsonSerializable
 
-
 @JsonSerializable
 @Parcelize
-@Entity(tableName = "favorite_heroes_table")
+@Entity(tableName = "favorites_table")
 data class Hero (
     @PrimaryKey
+    @ColumnInfo(name = "hero_id")
+    var id: String,
+
     @ColumnInfo(name = "hero_name")
-    val name :String,
+    var name: String,
 
     @ColumnInfo(name = "hero_power_stats")
     @TypeConverters(PowerStatsConverter::class)
-    val powerstats : PowerStats,
+    var powerstats: PowerStats,
 
     @ColumnInfo(name= "hero_biography")
     @TypeConverters(BiographyConverter::class)
-    val biography : Biography,
+    var biography: Biography,
 
     @ColumnInfo(name = "hero_appearance")
     @TypeConverters(AppearanceConverter::class)
-    val appearance : Appearance,
+    var appearance: Appearance,
 
     @ColumnInfo(name = "hero_work")
     @TypeConverters(WorkConverter::class)
-    val work : Work,
+    var work: Work,
 
     @ColumnInfo(name = "hero_connections")
     @TypeConverters(ConnectionsConverter::class)
-    val connections : Connections,
+    var connections: Connections,
 
     @ColumnInfo(name = "hero_image")
     @TypeConverters(ImageConverter::class)
-    val image : Image
+    var image: Image
 ) : Parcelable

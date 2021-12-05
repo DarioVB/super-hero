@@ -13,12 +13,15 @@ interface FavoritesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(hero: Hero) : Long
 
-    @Query("SELECT * FROM favorite_table WHERE hero_name LIKE :heroName")
-    fun hero(heroName: String?) : LiveData<List<Hero>>
+    @Query("SELECT * FROM favorites_table WHERE hero_id LIKE :id")
+    fun getHero(id: String?) : LiveData<List<Hero>>
 
-    @Query("DELETE FROM favorite_table")
+    @Query("SELECT EXISTS(SELECT * FROM favorites_table WHERE hero_id = :id)")
+    fun isRowExist(id : String) : Boolean
+
+    @Query("DELETE FROM favorites_table")
     fun delete() : Int
 
-    @Query("SELECT * FROM favorite_table ORDER BY hero_name ASC")
-    fun favouriteHeroes() : LiveData<List<Hero>>
+    @Query("SELECT * FROM favorites_table ORDER BY hero_name ASC")
+    fun favoriteHeroes() : LiveData<List<Hero>>
 }
