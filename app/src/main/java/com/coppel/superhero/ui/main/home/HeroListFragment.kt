@@ -1,5 +1,7 @@
 package com.coppel.superhero.ui.main.home
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -41,6 +43,8 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
         homeViewModel = ViewModelProvider(this, heroViewModelFactory).get(HeroViewModel::class.java)
         binding.viewModel = homeViewModel
 
+        inflateSearchView()
+
         val adapter = HeroesAdapter(HeroesAdapter.OnClickListener{
             homeViewModel.displaySelectedHero(it)
         })
@@ -81,7 +85,7 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when(item!!.itemId){
-            R.id.action_settings->{
+            R.id.action_settings -> {
                 return true
             }
         }
@@ -108,5 +112,19 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
                 }
             }
         })
+    }
+
+    private fun inflateSearchView() {
+        val toolbar = binding.toolbarMain
+        val searchManager = requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = toolbar.menu.findItem(R.id.action_search).actionView as SearchView
+
+        searchView.apply {
+            setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
+            setOnQueryTextListener(this@HeroListFragment)
+            setIconifiedByDefault(true)
+            isSubmitButtonEnabled = false
+            isIconified = false
+        }
     }
 }

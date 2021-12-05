@@ -12,8 +12,7 @@ import kotlinx.coroutines.Job
 
 class DetailViewModel (
     hero: Hero,
-    val app: Application,
-    val database: FavoritesDao) : AndroidViewModel(app) {
+    val app: Application) : AndroidViewModel(app) {
 
     private val _selectedHero = MutableLiveData<Hero>()
     val selectedHero: LiveData<Hero>

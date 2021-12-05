@@ -11,18 +11,20 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primaryColorLight">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_detail"
+        android:id="@+id/appbarDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/ctb_details"
+            android:id="@+id/ctbDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
@@ -31,21 +33,70 @@
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/consLayImg"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.selectedHero}"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_broken_image" />
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgHero"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.selectedHero}"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_broken_image" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consLayBack"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/gradient_item_hero"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    tools:text="Male"
+                    android:text="@{viewModel.selectedHero.appearance.gender}"
+                    app:layout_constraintEnd_toStartOf="@+id/tvRace"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    tools:text="Human"
+                    android:text="@{viewModel.selectedHero.appearance.race}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvGender"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/tb_details"
+                android:id="@+id/tbDetail"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -55,12 +106,549 @@
     </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:context="">
+            tools:context="com.coppel.superhero.detail.DetailFragment">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/consLayContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consLayStats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIntelligence"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_intelligence"
+                        android:textColor="@color/blue"
+                        android:text="@{viewModel.selectedHero.powerstats.intelligence}"
+                        android:gravity="center"
+                        tools:text="Intelligence"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintEnd_toStartOf="@+id/tvStrength"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvStrength"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_strength"
+                        android:textColor="@color/red"
+                        android:text="@{viewModel.selectedHero.powerstats.strength}"
+                        android:gravity="center"
+                        tools:text="Strength"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintEnd_toStartOf="@+id/tvSpeed"
+                        app:layout_constraintStart_toEndOf="@+id/tvIntelligence"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSpeed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_speed"
+                        android:textColor="@color/blueLight"
+                        android:text="@{viewModel.selectedHero.powerstats.speed}"
+                        tools:text="Speed"
+                        android:gravity="center"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toEndOf="@+id/tvStrength"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDurability"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_durability"
+                        android:textColor="@color/brown"
+                        android:text="@{viewModel.selectedHero.powerstats.durability}"
+                        android:gravity="center"
+                        tools:text="Durability"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvPower"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntelligence"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPower"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_power"
+                        android:textColor="@color/yellow"
+                        android:text="@{viewModel.selectedHero.powerstats.power}"
+                        tools:text="Power"
+                        android:gravity="center"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintEnd_toStartOf="@+id/tvCombat"
+                        app:layout_constraintStart_toEndOf="@+id/tvDurability"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntelligence"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCombat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:drawableBottom="@drawable/ic_combat"
+                        android:textColor="@color/purple_200"
+                        android:text="@{viewModel.selectedHero.powerstats.combat}"
+                        android:gravity="center"
+                        tools:text="Combat"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tvPower"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntelligence"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consLayBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/consLayStats">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardviewBio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:backgroundTint="@color/primaryColorLight"
+                        app:cardUseCompatPadding="false"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvHeaderBio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/title_biography"
+                                android:gravity="center_vertical|end"
+                                android:textSize="18sp"
+                                android:textColor="@color/orangeDarker"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Biography" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFullNameLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_full_name"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvHeaderBio"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFullName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.biography.fullName}'
+                                android:textSize="16sp"
+                                tools:text="Richard Milhouse Jones"
+                                app:layout_constraintStart_toStartOf="@+id/tvFullNameLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvFullNameLbl" />
+
+                            <View
+                                android:id="@+id/divider1"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvFullName"
+                                app:layout_constraintTop_toBottomOf="@+id/tvFullName" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAlterEgosLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_alter_egos"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider1"
+                                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAlterEgos"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@{viewModel.selectedHero.biography.alterEgos}"
+                                android:textSize="16sp"
+                                tools:text="No alter egos found"
+                                app:layout_constraintStart_toStartOf="@+id/tvAlterEgosLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvAlterEgosLbl" />
+
+                            <View
+                                android:id="@+id/divider2"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvAlterEgos"
+                                app:layout_constraintTop_toBottomOf="@+id/tvAlterEgos" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAliasesLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_aliases"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider2"
+                                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAliases"
+                                heroAliases="@{viewModel.selectedHero}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textSize="16sp"
+                                tools:text="Rick Jones, Greithoth, Batman"
+                                app:layout_constraintStart_toStartOf="@+id/tvAliasesLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvAliasesLbl" />
+
+                            <View
+                                android:id="@+id/divider3"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvAliases"
+                                app:layout_constraintTop_toBottomOf="@+id/tvAliases" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvPlaceOfBirthLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_place_of_birth"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider3"
+                                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvPlaceOfBirth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.biography.placeOfBirth}'
+                                android:textSize="16sp"
+                                tools:text="New York City, New York"
+                                app:layout_constraintStart_toStartOf="@+id/tvPlaceOfBirthLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirthLbl" />
+
+                            <View
+                                android:id="@+id/divider4"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvPlaceOfBirth"
+                                app:layout_constraintTop_toBottomOf="@+id/tvPlaceOfBirth" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFirstAppearanceLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_first_appearance"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider4"
+                                app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFirstAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.biography.firstAppearance}'
+                                android:textSize="16sp"
+                                tools:text="Daredevil #1 (April, 1964) (As Rock Davis)"
+                                app:layout_constraintStart_toStartOf="@+id/tvFirstAppearanceLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvFirstAppearanceLbl" />
+
+                            <View
+                                android:id="@+id/divider5"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvFirstAppearance"
+                                app:layout_constraintTop_toBottomOf="@+id/tvFirstAppearance" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvPublisherLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_publisher"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider5"
+                                app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvPublisher"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.biography.publisher}'
+                                android:textSize="16sp"
+                                tools:text="Marvel Comics"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvPublisherLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvPublisherLbl" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consLayConn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/consLayBio">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardviewConn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:backgroundTint="@color/primaryColorLight"
+                        app:cardUseCompatPadding="false"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvHeaderConn"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/tittle_connection"
+                                android:textSize="18sp"
+                                android:gravity="center_vertical|end"
+                                android:textColor="@color/orangeDarker"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Connections" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvGroupAffiliationLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_group_affiliation"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvHeaderConn"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvGroupAffiliation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.connections.groupAffiliation}'
+                                android:textSize="16sp"
+                                tools:text="Master of Evil, Lethal Legion, formely Worthy, Frightful Four"
+                                app:layout_constraintStart_toStartOf="@+id/tvGroupAffiliationLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvGroupAffiliationLbl" />
+
+                            <View
+                                android:id="@+id/divider6"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvGroupAffiliation"
+                                app:layout_constraintTop_toBottomOf="@+id/tvGroupAffiliation" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRelativesLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_relatives"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider6"
+                                app:layout_constraintTop_toBottomOf="@+id/divider6" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvRelatives"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@{viewModel.selectedHero.connections.relatives}"
+                                android:textSize="16sp"
+                                tools:text="Mary MacPherran (Titania) (wife); Jerry Sledge (son); Rockwell "
+                                app:layout_constraintStart_toStartOf="@+id/tvRelativesLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRelativesLbl" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consLayWork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/consLayConn">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardviewWork"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:backgroundTint="@color/primaryColorLight"
+                        app:cardUseCompatPadding="false"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardElevation="1dp"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvHeaderWork"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/tittle_work"
+                                android:textSize="18sp"
+                                android:gravity="center_vertical|end"
+                                android:textColor="@color/orangeDarker"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Work" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvOccupationLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_occupation"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvHeaderWork"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvOccupation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text='@{viewModel.selectedHero.work.occupation}'
+                                android:textSize="16sp"
+                                tools:text="Professional criminal; former professional boxer"
+                                app:layout_constraintStart_toStartOf="@+id/tvOccupationLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvOccupationLbl" />
+
+                            <View
+                                android:id="@+id/divider7"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="4dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/tvOccupation"
+                                app:layout_constraintTop_toBottomOf="@+id/tvOccupation" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvBaseLbl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/label_base"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange"
+                                app:layout_constraintStart_toStartOf="@+id/divider7"
+                                app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvBase"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="@{viewModel.selectedHero.work.base}"
+                                android:textSize="16sp"
+                                tools:text="Gotham City and New York; Formely Capitol City"
+                                app:layout_constraintStart_toStartOf="@+id/tvBaseLbl"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBaseLbl" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

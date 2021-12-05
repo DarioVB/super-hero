@@ -9,14 +9,20 @@
         <entry key="app/src/main/res/drawable/gradient_item_hero.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.2303370786516854" />
         <entry key="app/src/main/res/drawable/ic_broken_image.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/drawable/ic_combat.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable/ic_durability.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable/ic_intelligence.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_landscape_image_svgrepo_com.xml" value="0.23489583333333333" />
         <entry key="app/src/main/res/drawable/ic_outline_error.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/drawable/ic_power.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.23489583333333333" />
-        <entry key="app/src/main/res/layout/detail_fragment.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/drawable/ic_speed.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable/ic_strength.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/layout/detail_fragment.xml" value="0.335" />
         <entry key="app/src/main/res/layout/hero_list_fragment.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_hero_adapter.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/main_activity.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/layout/main_activity.xml" value="0.165" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/menu/menu_home_up.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/menu/menu_main_bottom.xml" value="0.21354166666666666" />

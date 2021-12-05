@@ -17,7 +17,7 @@ interface FavoritesDao {
     fun hero(heroName: String?) : LiveData<List<Hero>>
 
     @Query("DELETE FROM favorite_table")
-    fun clear() : Int
+    fun delete() : Int
 
     @Query("SELECT * FROM favorite_table ORDER BY hero_name ASC")
     fun favouriteHeroes() : LiveData<List<Hero>>
