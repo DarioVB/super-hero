@@ -22,6 +22,10 @@ class DetailViewModel (
     val statusAddToFavorite: LiveData<Boolean>
         get() = _statusAddToFavorite
 
+    private val _statusDeleteFromFavorite = MutableLiveData<Boolean>()
+    val statusDeleteFromFavorite: LiveData<Boolean>
+        get() = _statusDeleteFromFavorite
+
     private val _isHeroAdded = MutableLiveData<Boolean>()
     val isHeroAdded: LiveData<Boolean>
         get() = _isHeroAdded
@@ -45,11 +49,19 @@ class DetailViewModel (
         }
     }
 
-    fun addToFavourites() {
+    fun addToFavorites() {
         coroutineScope.launch {
             val hero = _selectedHero.value
             val status = saveFavoriteHero(hero!!)
             _statusAddToFavorite.value = status > 0
+        }
+    }
+
+    fun deleteFromFavorites() {
+        coroutineScope.launch {
+            val hero = _selectedHero.value
+            val status = deleteFavoriteHero(hero!!)
+            _statusDeleteFromFavorite.value = status > 0
         }
     }
 
@@ -59,6 +71,14 @@ class DetailViewModel (
             insertId = dbFavorites.insert(hero)
         }
         return insertId
+    }
+
+    private suspend fun deleteFavoriteHero(hero: Hero): Int {
+        var num = 0
+        withContext(Dispatchers.IO) {
+            num = dbFavorites.deleteRow(hero)
+        }
+        return num
     }
 
     private suspend fun checkRecord(hero: Hero): Boolean {

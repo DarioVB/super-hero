@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_combat.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_durability.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.19537037037037036" />
+        <entry key="app/src/main/res/drawable/ic_favorite_outline.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_intelligence.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_landscape_image_svgrepo_com.xml" value="0.23489583333333333" />
         <entry key="app/src/main/res/drawable/ic_outline_error.xml" value="0.23489583333333333" />
@@ -22,11 +23,12 @@
         <entry key="app/src/main/res/drawable/ic_speed.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/ic_strength.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/drawable/selector_nav_item.xml" value="0.19537037037037036" />
-        <entry key="app/src/main/res/layout/detail_fragment.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/detail_fragment.xml" value="0.375" />
         <entry key="app/src/main/res/layout/favorites_fragment.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/hero_list_fragment.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_hero_adapter.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_hero_favorite_adapter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.165" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_home_up.xml" value="0.21458333333333332" />

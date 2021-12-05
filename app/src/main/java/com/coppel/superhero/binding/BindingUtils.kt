@@ -13,14 +13,15 @@ import com.coppel.superhero.models.Hero
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: AppCompatImageView, hero: Hero) {
+    val requestOptions = RequestOptions()
+        .placeholder(R.drawable.ic_broken_image)
+        .error(R.drawable.ic_broken_image)
+
     hero.image.imageUrl.let {
         Glide.with(imageView.context)
-            .load(hero.image.imageUrl)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.ic_broken_image)
-                    .error(R.drawable.ic_broken_image)
-            )
+            .load(it)
+            .apply(requestOptions)
+            .timeout(600)
             .into(imageView)
     }
 }

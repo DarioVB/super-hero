@@ -30,24 +30,20 @@ class MainFragment : Fragment(), NavigationBarView.OnItemSelectedListener {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
         binding.navBottom.setOnItemSelectedListener(this)
-        //setupNavBottom()
         return binding.root
     }
 
-    private fun setupNavBottom() {
-        val navController = childFragmentManager.findFragmentById(R.id.nav_main_home)
-        binding.navBottom.setupWithNavController(navController = navController!!.findNavController())
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.title) {
-            Constants.TITLE_HOME -> {
-                val action = FavoritesFragmentDirections.actionFavsFragmentToHomeFragment()
-                requireActivity().findNavController(R.id.nav_main_home).navigate(action)
-            }
-            Constants.TITLE_FAVORITES -> {
-                val action = HeroListFragmentDirections.actionHomeFragmentToFavsFragment()
-                requireActivity().findNavController(R.id.nav_main_home).navigate(action)
+        if (!item.isChecked) {
+            when(item.title) {
+                Constants.TITLE_HOME -> {
+                    val action = FavoritesFragmentDirections.actionFavsFragmentToHomeFragment()
+                    requireActivity().findNavController(R.id.nav_main_home).navigate(action)
+                }
+                Constants.TITLE_FAVORITES -> {
+                    val action = HeroListFragmentDirections.actionHomeFragmentToFavsFragment()
+                    requireActivity().findNavController(R.id.nav_main_home).navigate(action)
+                }
             }
         }
         return true

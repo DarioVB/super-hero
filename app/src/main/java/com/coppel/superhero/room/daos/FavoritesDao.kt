@@ -1,10 +1,7 @@
 package com.coppel.superhero.room.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.coppel.superhero.models.Hero
 
 @Dao
@@ -21,6 +18,9 @@ interface FavoritesDao {
 
     @Query("DELETE FROM favorites_table")
     fun delete() : Int
+
+    @Delete
+    fun deleteRow(hero: Hero) : Int
 
     @Query("SELECT * FROM favorites_table ORDER BY hero_name ASC")
     fun favoriteHeroes() : LiveData<List<Hero>>

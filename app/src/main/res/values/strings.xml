@@ -15,7 +15,8 @@
     <string name="toolbar_title_favorite_superheros">Favorites</string>
     <string name="menu_refresh">Refresh</string>
     <string name="title_favorites">Favorites</string>
-    <string name="info_failed_to_add_to_favourite">Failed to Add to Favorites</string>
+    <string name="info_failed_to_add_to_favorite">Failed to Add to Favorites</string>
+    <string name="info_failed_to_delete_from_favorite">Failed to Delete from Favorites</string>
     <string name="info_added_to_favorites"> Added to Favorites</string>
     <string name="info_deleted_from_favorites"> Deleted from Favorites</string>
     <string name="label_place_of_birth">Place of Birth</string>

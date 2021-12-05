@@ -67,33 +67,62 @@
                     android:id="@+id/tvGender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    tools:text="Male"
                     android:text="@{viewModel.selectedHero.appearance.gender}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvRace"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    tools:text="Male" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRace"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    tools:text="Human"
                     android:text="@{viewModel.selectedHero.appearance.race}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvGender"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    tools:text="Human" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.selectedHero.appearance.weight.get(0)}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvHeight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="980 lb" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.selectedHero.appearance.height.get(0)}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvGender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="6'8" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.appbar.MaterialToolbar

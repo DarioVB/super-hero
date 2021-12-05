@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import java.util.concurrent.TimeUnit
 
 private const val ACCESS_TOKEN = "10220016060375240"
 private const val BASE_URL = "https://superheroapi.com/api/$ACCESS_TOKEN/"
@@ -24,6 +25,8 @@ private val interceptor = HttpLoggingInterceptor()
 
 private val client = OkHttpClient.Builder()
     .addInterceptor(interceptor)
+    .readTimeout(30, TimeUnit.SECONDS)
+    .connectTimeout(30, TimeUnit.SECONDS)
     .build()
 
 private val retrofit = Retrofit.Builder()

@@ -68,20 +68,19 @@ class DetailFragment : Fragment() {
             })
 
         binding.fabAddFavorites.setOnClickListener {
-            binding.viewModel?.addToFavourites()
+            if (detailViewModel.isHeroAdded.value!!) {
+                binding.viewModel?.deleteFromFavorites()
+            } else {
+                binding.viewModel?.addToFavorites()
+            }
         }
 
         detailViewModel.statusAddToFavorite.observe(viewLifecycleOwner, Observer {
-            when(it) {
-                true -> {
-                    binding.fabAddFavorites.setImageResource(R.drawable.ic_favorite)
-                    Toast.makeText(context, detailViewModel.selectedHero.value?.name + getString(R.string.info_added_to_favorites), Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                    binding.fabAddFavorites.setImageResource(R.drawable.ic_add_favorite)
-                    Toast.makeText(context, detailViewModel.selectedHero.value?.name + getString(R.string.info_failed_to_add_to_favourite), Toast.LENGTH_SHORT).show()
-                }
-            }
+            detailViewModel.isHeroAdded()
+        })
+
+        detailViewModel.statusDeleteFromFavorite.observe(viewLifecycleOwner, Observer {
+            detailViewModel.isHeroAdded()
         })
 
         detailViewModel.isHeroAdded.observe(viewLifecycleOwner, Observer {
