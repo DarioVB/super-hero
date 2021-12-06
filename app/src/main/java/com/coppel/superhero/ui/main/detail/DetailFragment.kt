@@ -76,10 +76,42 @@ class DetailFragment : Fragment() {
         }
 
         detailViewModel.statusAddToFavorite.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> {
+                    Toast.makeText(
+                        context,
+                        detailViewModel.selectedHero.value?.name + getString(R.string.info_added_to_favorites),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    Toast.makeText(
+                        context,
+                        detailViewModel.selectedHero.value?.name + getString(R.string.info_failed_to_add_to_favorite),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
             detailViewModel.isHeroAdded()
         })
 
         detailViewModel.statusDeleteFromFavorite.observe(viewLifecycleOwner, Observer {
+            when(it) {
+                true -> {
+                    Toast.makeText(
+                        context,
+                        detailViewModel.selectedHero.value?.name + getString(R.string.info_deleted_from_favorites),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    Toast.makeText(
+                        context,
+                        detailViewModel.selectedHero.value?.name + getString(R.string.info_failed_to_delete_from_favorite),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
             detailViewModel.isHeroAdded()
         })
 

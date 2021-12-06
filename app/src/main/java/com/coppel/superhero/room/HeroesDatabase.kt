@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.coppel.superhero.models.Hero
+import com.coppel.superhero.room.converters.*
 import com.coppel.superhero.room.daos.FavoritesDao
 import com.coppel.superhero.utils.Constants
 
 @Database(entities = [Hero::class], version = 1, exportSchema = false)
 @TypeConverters
-    (PowerStatsConverter::class,BiographyConverter::class, AppearanceConverter::class,
+    (
+    PowerStatsConverter::class, BiographyConverter::class, AppearanceConverter::class,
     WorkConverter::class, ConnectionsConverter::class, ImageConverter::class)
 abstract class HeroesDatabase : RoomDatabase() {
 

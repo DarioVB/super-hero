@@ -20,6 +20,11 @@
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFrag"
             app:enterAnim="@anim/anim_slide_in_left" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFrag"
+            app:popUpTo="@id/mainFrag" />
     </fragment>
 
     <fragment
@@ -37,4 +42,9 @@
             app:destination="@id/mainFrag"
             app:enterAnim="@anim/anim_slide_out_left" />
     </fragment>
+
+    <fragment
+        android:id="@+id/aboutFrag"
+        android:name="com.coppel.superhero.ui.main.about.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

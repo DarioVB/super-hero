@@ -4,6 +4,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -86,8 +87,10 @@ class HeroListFragment : Fragment(), SearchView.OnQueryTextListener, Toolbar.OnM
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
+        Log.e(javaClass.simpleName, "---item_menu---> $item")
         when(item!!.itemId) {
-            R.id.action_settings -> {
+            R.id.action_about -> {
+                requireActivity().findNavController(R.id.nav_host).navigate(R.id.action_homeFragment_to_aboutFragment)
                 return true
             }
         }

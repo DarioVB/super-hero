@@ -30,8 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:title="@string/toolbar_title_superheros"
-                app:popupTheme="@style/MyActionButtonOverflow"
-                app:menu="@menu/menu_home_up"/>
+                app:menu="@menu/menu_home_up"
+                app:popupTheme="@style/MyActionBtnOverflow" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.coppel.superhero.room.*
+import com.coppel.superhero.room.converters.*
 import kotlinx.parcelize.Parcelize
 import se.ansman.kotshi.JsonSerializable
 
