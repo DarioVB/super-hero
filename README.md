@@ -6,7 +6,7 @@
 
 ## Dependencies used
 
-* [Live Data:](ttps://developer.android.com/topic/libraries/architecture/livedata) an observable class with lifecycle awareness.
+* [Live Data:](https://developer.android.com/topic/libraries/architecture/livedata) an observable class with lifecycle awareness.
 * [Navigation:](https://developer.android.com/guide/navigation/) easier ways to navigate across your app.
 * [ViewModel:](https://developer.android.com/topic/libraries/architecture/viewmodel) stores and manage UI-related data in a lifecycle conscious way.
 * [AndroidX](https://developer.android.com/jetpack/androidx) an improvement to the [Support Library][6].
